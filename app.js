@@ -1,5 +1,5 @@
+require("dotenv").config();
 const express = require("express")
-const dotenv = require("dotenv")
 const connectDB = require("./config/db")
 const User = require("./models/models")
 const jwt = require("jsonwebtoken")
@@ -7,8 +7,6 @@ const helmet = require("helmet")
 const cors = require("cors")
 const rateLimit = require("express-rate-limit")
 let { refreshTokensList } = require("./Controllers/login")
-
-dotenv.config()
 
 const app = express()
 app.use(helmet())
@@ -28,7 +26,6 @@ const loginRateLimiter = rateLimit({
 })
 
 app.use(GobalRateLimiter)
-
 app.use(express.json())
 
 connectDB()
