@@ -1,0 +1,31 @@
+GET http://localhost:5000/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik11aGFuQGdtYWlsLmNvbSIsImlhdCI6MTc3NTAxMTE0NywiZXhwIjoxNzc1MDExMjA3fQ.EnVESeuL2TOuR56Hkjo4Go-T0fqcu04JYPv9rTMptLA
+
+
+###
+
+POST http://localhost:5000/refresh
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik11aGFuQGdtYWlsLmNvbSIsImlhdCI6MTc3NTAxMTE0NywiZXhwIjoxNzc1NjE1OTQ3fQ.nzGP-vJ0h2Mrk6vf-He4SqVlu4Wsa8jOZ1WCvTqwUlQ"
+}
+
+###
+
+POST http://localhost:5000/delete
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik11aGFuQGdtYWlsLmNvbSIsImlhdCI6MTc3NTAxMTE0NywiZXhwIjoxNzc1NjE1OTQ3fQ.nzGP-vJ0h2Mrk6vf-He4SqVlu4Wsa8jOZ1WCvTqwUlQ"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email" : "Muhan@gmail.com",
+    "password": "Dong Le"
+}
