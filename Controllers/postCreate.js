@@ -8,10 +8,12 @@ exports.createPost = async (req, res) => {
     }
 
     try{
-        const {title, subtitle } = req.body;
+        const {title, subtitle, completed} = req.body;
         const newPost = await post.create({
             title,
-            subtitle
+            subtitle,
+            completed : completed || false,
+            author : req.user.email
         })
         res.status(201).json(newPost);
     }catch(err){

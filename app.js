@@ -7,6 +7,7 @@ const helmet = require("helmet")
 const cors = require("cors")
 const rateLimit = require("express-rate-limit")
 let { refreshTokensList } = require("./Controllers/login")
+const Post = require("./models/postModel")
 
 const app = express()
 app.use(helmet())
@@ -32,7 +33,7 @@ connectDB()
 
 app.use("/api/auth", loginRateLimiter, require("./routers/appRouter"))
 
-app.use("/api/",GobalRateLimiter, require("./routers/appDataRoutes"))
+app.use("/api/",GobalRateLimiter, authentication, require("./routers/appDataRoutes"))
 
 function authentication(req, res, next) {
     const authHeader = req.headers['authorization'];
