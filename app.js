@@ -32,6 +32,8 @@ connectDB()
 
 app.use("/api/auth", loginRateLimiter, require("./routers/appRouter"))
 
+app.use("/api/",GobalRateLimiter, require("./routers/appDataRoutes"))
+
 function authentication(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
