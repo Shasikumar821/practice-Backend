@@ -11,6 +11,7 @@ const Post = require("./models/postModel")
 
 const app = express()
 app.use(helmet())
+app.use(cors())
 
 const GobalRateLimiter = rateLimit({
     windowMs : 15 * 60 * 1000,
