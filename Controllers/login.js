@@ -22,7 +22,7 @@ exports.login = async (req, res) => {
             })
         }
         const payload = { email: user.email };
-        const accessToken = await jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1m' });
+        const accessToken = await jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5m' });
         const refreshToken = await jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
         refreshTokensList.push(refreshToken);
 
