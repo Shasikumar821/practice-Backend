@@ -4,7 +4,7 @@ const Post = require("../models/postModel")
 
 exports.getPosts = async (req, res) => {
     try {
-        const posts = await Post.find({ author: req.user.email });
+        const posts = await Post.find({ author: req.user.id }).populate("author", "email name");
         if(!posts){
             return res.status(404).json({ error: "No posts found for this user" });
         }

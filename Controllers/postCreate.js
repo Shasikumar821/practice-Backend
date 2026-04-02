@@ -1,4 +1,6 @@
 const post = require("../models/postModel");
+const User = require("../models/models")
+const mongoose = require("mongoose")
 const validatePost = require("../models/secureModels/postSecureModel")
 
 exports.createPost = async (req, res) => {
@@ -13,7 +15,7 @@ exports.createPost = async (req, res) => {
             title,
             subtitle,
             completed : completed || false,
-            author : req.user.email
+            author : req.user.id
         })
         res.status(201).json(newPost);
     }catch(err){

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const User = require("./models")
 
 const postSchema = new mongoose.Schema({
     title : {
@@ -17,6 +18,11 @@ const postSchema = new mongoose.Schema({
     completed : {
         type : Boolean,
         default : false
+    },
+    author : {
+        type : new mongoose.Schema.Types.ObjectId,
+        ref : "User",
+        required : true,
     }
 },{
     timestamps : true,
