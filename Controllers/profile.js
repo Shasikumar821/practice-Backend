@@ -4,7 +4,7 @@ const router = express.Router();
 
 exports.getProfile = async (req, res) => {
     try {
-        const profile = await User.find({ author : req.user.id}).populate("author", "email" , "name");
+        const profile = await User.findOne({ email}).populate("author", "email" , "name");
         if(profile == null) return res.status(203).json("No Data Found");
         res.status(201).json({ profile });
     }catch (err){
@@ -14,7 +14,7 @@ exports.getProfile = async (req, res) => {
 
 exports.UpdateProfile = async (req, res) => {
     try{
-        const profile = await User.findOneAndUpdate({author : req.user.id, _id : req.params.id }, req.body , { new : true });
+        const profile = await User.findOneAndUpdate({ email }, req.body , { new : true });
         if(profile == null) return res.status(203).json("Server Issue");
         res.status(201).json("Profile Updated");
     }catch (err){
@@ -24,7 +24,7 @@ exports.UpdateProfile = async (req, res) => {
 
 exports.deleteProfile = async (req, res) => {
     try{
-        const profile = await User.findOneAndDelete({author : req.user.id, _id : req.params.id });
+        const profile = await User.findOneAndDelete({ email });
         if(profile == null) return res.status(203).json("Server Issue");
         res.status(202).json("Profile Deleted");
     }catch (err){
