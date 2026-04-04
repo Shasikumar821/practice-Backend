@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 const userSchema = mongoose.Schema({
     name : {
@@ -13,9 +13,19 @@ const userSchema = mongoose.Schema({
     password : {
         type : String,
         required: true,
-    }
+    },
+    phone : {
+        type : String,
+        minlength : 10,
+        maxlength : 10
+    },
+    Address : {
+        type : String,
+        maxlength : 300,
+    },
 },{
-    foreignkey : false
+    foreignkey : false,
+    timeStamp : true
 })
 
 userSchema.pre("save", async function() {
