@@ -4,7 +4,7 @@ const router = express.Router();
 
 exports.getProfile = async (req, res) => {
     try {
-        const profile = await User.findOne({ email: req.user.email }).populate("author", "email" , "name");
+        const profile = await User.findOne({ email: req.user.email }).populate("email");
         if(profile == null) return res.status(203).json("No Data Found");
         res.status(201).json({ profile });
     }catch (err){
